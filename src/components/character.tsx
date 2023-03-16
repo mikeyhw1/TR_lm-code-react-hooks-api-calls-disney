@@ -1,25 +1,34 @@
 import { DisneyCharacter } from "../disney_character";
 
 interface CharacterProps {
-  character: DisneyCharacter;
+    character: DisneyCharacter;
+    characterFavourites: Array<number>;
+    updateFavourites: (favourites: Array<number>) => void;
 }
 
-const Character: React.FC<CharacterProps> = ({ character }) => {
-  return (
-    <article className="card">
+const Character: React.FC<CharacterProps> = ({ character, characterFavourites, updateFavourites }) => {
+    function toggleFavouriteForCharacter(characterId: number) {
+        if (!characterFavourites.includes(characterId)) {
+            // add to favourites
+            updateFavourites([...characterFavourites, characterId]);
+        } else {
+            // remove from favourites
+            const updatedFavourites = characterFavourites.filter((id) => id !== characterId);
+            updateFavourites(updatedFavourites);
+        }
+    }
 
-      <h2>{character.name}</h2>
+    return (
+        <article className="card">
+            <h2>{character.name}</h2>
 
-      <button className="card__button ">Add to favourites</button>
+            <button className="card__button" onClick={() => toggleFavouriteForCharacter(character._id)}>
+                {!characterFavourites.includes(character._id) ? "Add to Favourites" : "Favourited"}
+            </button>
 
-      <img
-        className="card__img"
-        src={character.imageUrl}
-        alt={character.name}
-      />
-
-    </article>
-  );
+            <img className="card__img" src={character.imageUrl} alt={character.name} />
+        </article>
+    );
 };
 
 export default Character;

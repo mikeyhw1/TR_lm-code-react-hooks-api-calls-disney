@@ -1,4 +1,4 @@
-# The World of Disney React App!
+# The World of Disney React App
 
 ## Introduction
 
