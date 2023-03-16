@@ -1,4 +1,4 @@
-# The World of Disney React App
+# The World of Disney React App!
 
 ## Introduction
 
@@ -14,12 +14,12 @@ The application is called **The World of Disney** and users can browse through a
 
 These are the steps you'll cover:
 
-- Replace hard coded state of disney characters with an API call
-- Utilise `useEffect` to make the API call when the state changes
-- Further utilise `useEffect` to fetch new data from the API when page navigation changes
-- Introduce an ability to 'favourite' different characters
-- Utilise `useContext` to access the list of favourites from any component in the app
-- Implement `showFavourites` functionality to only show your favourite disney characters
+-   Replace hard coded state of disney characters with an API call
+-   Utilise `useEffect` to make the API call when the state changes
+-   Further utilise `useEffect` to fetch new data from the API when page navigation changes
+-   Introduce an ability to 'favourite' different characters
+-   Utilise `useContext` to access the list of favourites from any component in the app
+-   Implement `showFavourites` functionality to only show your favourite disney characters
 
 ## Running the application
 
