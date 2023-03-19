@@ -1,14 +1,12 @@
 import React, { useState, useContext } from "react";
 
-const FavouritesContext = React.createContext<number[]>([]);
-const FavouritesUpdateContext = React.createContext<(characterId: number) => void>(() => null);
+const FavouritesContext = React.createContext<{ favourites: number[]; toggleFavourites: (favs: number) => void }>({
+    favourites: [],
+    toggleFavourites: () => null,
+});
 
 export function useFavourites() {
     return useContext(FavouritesContext);
-}
-
-export function useFavouritesUpdate() {
-    return useContext(FavouritesUpdateContext);
 }
 
 export function FavCharacterProvider({ children }: { children: React.ReactNode }) {
@@ -24,8 +22,8 @@ export function FavCharacterProvider({ children }: { children: React.ReactNode }
     };
 
     return (
-        <FavouritesContext.Provider value={characterFavourites}>
-            <FavouritesUpdateContext.Provider value={toggleFavourites}>{children}</FavouritesUpdateContext.Provider>
+        <FavouritesContext.Provider value={{ favourites: characterFavourites, toggleFavourites: toggleFavourites }}>
+            {children}
         </FavouritesContext.Provider>
     );
 }
